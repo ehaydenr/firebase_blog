@@ -11,4 +11,5 @@ Allows you to enter blog posts into a form and update your website through Fireb
 Open index.html file in browser to run
 
 CSS (Pretty) - Complete/
+
 Basic (Ugly) - Bare/
