@@ -69,7 +69,8 @@ input:focus, textarea:focus{
 }
 
 textarea {
-    width: 100%
+    width: 100%;
+    resize: none;
 }
 
  .btn {
