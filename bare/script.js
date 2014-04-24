@@ -33,7 +33,7 @@ $(document).ready(function() {
 
         // Post Object
         var post = snapshot.val();
-        
+        /*
         // Post Data
         var title = '<h1>' + post.title + '</h1>';
         var author = '<em>by: ' + post.author + '</em>';
@@ -43,6 +43,17 @@ $(document).ready(function() {
         
         // Insert Post into page
         $('.posts').prepend(title + author + content);
+        */
+        var title = document.createElement("h1");
+        title.appendChild(document.createTextNode(post.title));
+        var author = document.createElement("em");
+        author.appendChild(document.createTextNode(post.author));
+        var br = document.createElement("br");
+        var content = document.createTextNode(post.content);
         
+        $("posts").prepend(content);
+        $("posts").prepend(br);
+        $("posts").prepend(author);
+        $("posts").prepend(title);
     });
 })
