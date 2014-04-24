@@ -6,9 +6,9 @@ $(document).ready(function() {
           var title = $('#titleInput').val();
           var content = $('#contentInput').val();
           
-          //console.log("Sending:\nTitle: " + title + "\nAuthor: " + author + "\nContent: " + content);
+          //console.log('Sending:\nTitle: ' + title + '\nAuthor: ' + author + '\nContent: ' + content);
           
-          if(author != "" && title != "" && content != ""){
+          if(author != '' && title != '' && content != ''){
             dataRef.push({author:author, title:title, content:content});
             //$('#authorInput').val('');
             $('#titleInput').val('');
@@ -23,25 +23,27 @@ $(document).ready(function() {
     
     dataRef.limit(10).on('child_added', function (snapshot) {
         var post = snapshot.val();
-        /*
-        var title = '<div class="title">' + post.title + '</div>';
-        var author = '<div class="author">by: ' + post.author + '</div>';
-        var content = '<br /><div class="content">' + post.content + '</div>';
-        
-        console.log("Received:\nTitle: " + title + "\nAuthor: " + author + "\nContent: " + content);
-        
-        $('.posts').prepend('<div class="module contentContainer">' + title + author + content + '</div>');
-        */
-        var title = document.createElement("h1");
+
+        var title = document.createElement('div');
+        title.className = 'title';
         title.appendChild(document.createTextNode(post.title));
-        var author = document.createElement("em");
+
+        var author = document.createElement('div');
+        author.className = 'author';
         author.appendChild(document.createTextNode(post.author));
-        var br = document.createElement("br");
-        var content = document.createTextNode(post.content);
+
+        var content = document.createElement('div');
+        content.className = 'content';
+        content.appendChild(document.createTextNode(post.content));
+
+        var module = document.createElement('div');
+        module.className = 'module contentContainer';
+
+        module.appendChild(title);
+        module.appendChild(author);
+        module.appendChild(content);
         
-        $("posts").prepend(content);
-        $("posts").prepend(br);
-        $("posts").prepend(author);
-        $("posts").prepend(title);
+        $('.posts').prepend(module);
+
     });
 })
