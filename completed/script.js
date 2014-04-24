@@ -23,7 +23,7 @@ $(document).ready(function() {
     
     dataRef.limit(10).on('child_added', function (snapshot) {
         var post = snapshot.val();
-        
+        /*
         var title = '<div class="title">' + post.title + '</div>';
         var author = '<div class="author">by: ' + post.author + '</div>';
         var content = '<br /><div class="content">' + post.content + '</div>';
@@ -31,6 +31,17 @@ $(document).ready(function() {
         console.log("Received:\nTitle: " + title + "\nAuthor: " + author + "\nContent: " + content);
         
         $('.posts').prepend('<div class="module contentContainer">' + title + author + content + '</div>');
+        */
+        var title = document.createElement("h1");
+        title.appendChild(document.createTextNode(post.title));
+        var author = document.createElement("em");
+        author.appendChild(document.createTextNode(post.author));
+        var br = document.createElement("br");
+        var content = document.createTextNode(post.content);
         
+        $("posts").prepend(content);
+        $("posts").prepend(br);
+        $("posts").prepend(author);
+        $("posts").prepend(title);
     });
 })
